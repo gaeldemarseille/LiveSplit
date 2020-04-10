@@ -13,10 +13,23 @@ namespace LiveSplit.TimeFormatters
 
         public string Format(TimeSpan? time, TimeFormat format)
         {
-            var formatRequest = new GeneralTimeFormatter {
+            var formatRequest = new GeneralTimeFormatter
+            {
                 Accuracy = TimeAccuracy.Hundredths,
                 NullFormat = NullFormat.ZeroWithAccuracy,
                 TimeFormat = format
+            };
+
+            return formatRequest.Format(time);
+        }
+        public string Format(TimeSpan? time, TimeFormat format, TimeSystem system)
+        {
+            var formatRequest = new GeneralTimeFormatter
+            {
+                Accuracy = TimeAccuracy.Hundredths,
+                NullFormat = NullFormat.ZeroWithAccuracy,
+                TimeFormat = format,
+                TimeSystem = system
             };
 
             return formatRequest.Format(time);
